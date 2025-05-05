@@ -1,0 +1,114 @@
+services:
+  mariadb:
+    container_name: mariadb
+    networks:
+      - inception
+    build: ./requirements/mariadb
+    restart:  always
+    env_file: .env
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb:/var/lib/mysql
+
+  nginx:
+    depends_on:
+      - wordpress
+    container_name: nginx
+    networks:
+      - inception
+    build: ./requirements/nginx
+    volumes:
+      - wordpress:/var/www/wordpress
+    env_file: .env
+    restart:  always
+    ports:
+      - "443:443"
+
+  wordpress:
+    depends_on:
+      - mariadb
+    container_name: wordpress
+    networks:
+      - inception
+    build: ./requirements/wordpress
+    volumes:
+      - wordpress:/var/www/wordpress
+    env_file: .env
+    restart:  always
+    ports:
+      - 9000:9000
+
+  adminer:
+    networks: 
+      - inception
+    build: ./requirements/bonus/adminer
+    ports:
+      - "8000:8000"
+
+  redis:
+    build: ./requirements/bonus/redis
+    networks:
+      - inception
+    restart: always
+
+  ftp:
+    build: ./requirements/bonus/ftp
+    volumes:
+      - wordpress:/home/melachyr/ftp/files
+    env_file:
+        - .env
+    ports:
+      - 21:21
+      - 20:20
+      - "40000-40005:40000-40005"
+    restart: always
+
+  # portainer:
+  #   build: ./requirements/bonus/portainer
+  #   networks:
+  #     - inception
+  #   restart: always
+  #   ports:
+  #     - 9001:9001
+  #     - 9443:9443
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - portainer:/data
+
+  site:
+    build: ./requirements/bonus/site
+    networks:
+      - inception
+    ports:
+      - 81:81
+    restart: always
+   
+networks:
+    inception:
+      driver: bridge
+
+volumes:
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/data/wordpress'
+
+  mariadb:
+    name : mariadb
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/data/mariadb'
+
+  portainer:
+    name: portainer
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/data/portainer'

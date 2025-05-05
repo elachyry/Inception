@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Static Site with More Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            background-color: #35424a;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        header nav a {
+            color: #ffffff;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #35424a;
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: #fff;
+            padding: 20px;
+            flex: 1 1 45%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.2rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Static Site</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About This Site</h2>
+            <p>This is a simple static website built with HTML and CSS inside a single file. It is easy to maintain, fast to load, and perfect for showcasing small projects or personal portfolios.</p>
+            <p>Static sites are ideal for when you don't need a server-side backend. They can be hosted anywhere and usually cost little to nothing to maintain.</p>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>Fast</h3>
+                    <p>Static sites are extremely fast because they don't require any server processing after being requested.</p>
+                </div>
+                <div class="feature">
+                    <h3>Secure</h3>
+                    <p>Since there's no database or server-side code to hack, static sites are much more secure.</p>
+                </div>
+                <div class="feature">
+                    <h3>Easy to Deploy</h3>
+                    <p>You can deploy static sites anywhere: GitHub Pages, Netlify, Vercel, or a simple Apache server.</p>
+                </div>
+                <div class="feature">
+                    <h3>Lightweight</h3>
+                    <p>Minimal resources needed — just plain HTML, CSS, and maybe some optional JavaScript if you want more interaction.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Want to get in touch? Feel free to reach out!</p>
+            <p>Email: example@example.com</p>
+            <p>Phone: +123 456 7890</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Static Site. All rights reserved.</p>
+    </footer>
+</body>
+</html>
